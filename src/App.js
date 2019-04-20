@@ -93,6 +93,11 @@ export default () => {
         <Switch>
           <Route
             exact
+            path="/"
+            component={() => <Dashboard chairs={chairs} partyId={partyId} />}
+          />
+          <Route
+            exact
             path="/:id"
             component={() => <Dashboard chairs={chairs} partyId={partyId} />}
           />
