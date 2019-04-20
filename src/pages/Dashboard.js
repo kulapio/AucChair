@@ -1,11 +1,28 @@
 import React from 'react'
+import { Flex, Text } from 'rebass'
 import Loadable from 'react-loadable'
-import { Flex, Box, Text } from 'rebass'
+import Loading from '../components/Loading'
 
-const loading = <div>...loading</div>
+const Tab = Loadable({
+  loader: () => import('../components/Tab'),
+  loading: () => <Loading />,
+})
 
-export default props => (
-  <Flex flexDirection="row" py={4} alignItems="flex-start">
-    <Text>test test test</Text>
-  </Flex>
-)
+export default () => {
+  const list = [
+    'The Universe  ',
+    'including planets, stars, galaxies,',
+    'comprises all of space and time',
+    ' astronomical observations led',
+  ]
+  return (
+    <Flex flexDirection="column" width={1} pt="20px">
+      {list.map((name, i) => (
+        <Flex key={i} mt="20px">
+          <Tab name={name} />
+        </Flex>
+      ))}
+      <Loading size="128px" />
+    </Flex>
+  )
+}

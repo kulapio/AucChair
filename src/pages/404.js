@@ -8,7 +8,6 @@ export default props => (
         404: You've wondered too far!
       </Text>
     </Box>
-
     <Box>
       <Text fontSize={16}>No block is found here</Text>
     </Box>
