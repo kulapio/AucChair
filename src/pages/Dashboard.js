@@ -5,7 +5,11 @@ import Loading from '../components/Loading'
 
 const Tab = Loadable({
   loader: () => import('../components/Tab'),
-  loading: () => <Loading />,
+  loading: () => (
+    <Flex justifyContent="center" alignItems="center" flex={1}>
+      <Loading />
+    </Flex>
+  ),
 })
 
 export default ({ chairs, partyId }) => {
