@@ -26,11 +26,13 @@ export default ({ name }) => (
     <Flex flex={2}>
       <Text color="white">{name}</Text>
     </Flex>
-    <Flex bg="white" px="10px" style={{ borderRadius: '4px' }}>
-      <Text lineHeight="40px">12m</Text>
-    </Flex>
-    <Flex flex={1} justifyContent="flex-end">
-      <PlusButton>+ 1m</PlusButton>
+    <Flex>
+      <Flex bg="white" px="10px" mr="5px" style={{ borderRadius: '4px' }}>
+        <Text lineHeight="40px">12m</Text>
+      </Flex>
+      <Flex flex={1} justifyContent="flex-end">
+        <PlusButton>+ 1m</PlusButton>
+      </Flex>
     </Flex>
   </Flex>
 )
