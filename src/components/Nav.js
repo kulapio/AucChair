@@ -9,8 +9,7 @@ const Favicon = Loadable({
   loading: () => <Loading />,
 })
 
-export default () => {
-  const tokens = 500000
+export default ({ party }) => {
   return (
     <Flex
       flexDirection="row"
@@ -33,10 +32,10 @@ export default () => {
       </Flex>
       <Flex justifyContent="flex-end">
         <Text lineHeight="45px" color={colors.darkGreen} fontWeight={900}>
-          Tokens
+          Budget
         </Text>
         <Flex bg="white" px="10px" m="10px" style={{ borderRadius: '4px' }}>
-          <Text lineHeight="25px">{tokens}</Text>
+          <Text lineHeight="25px">{party && party.budget}m</Text>
         </Flex>
       </Flex>
     </Flex>

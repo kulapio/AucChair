@@ -10,4 +10,5 @@ export default {
   tan: '#DBD6BE',
   peru: '#CB5E30',
   sienna: '#8C6A2A',
+  brick: '#AE511F',
 }
