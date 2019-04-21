@@ -23,11 +23,14 @@ const Favicon = Loadable({
   loading: () => <Loading />,
 })
 
-export default ({ partyId, chair }) => {
+export default ({ partyId, chair, budget }) => {
   const isWin =
-    partyId === chair.winnerParty.id &&
-    chair.bidAmount &&
-    Math.floor(chair.bidAmount) > 0
+    (partyId === chair.winnerParty.id &&
+      chair.bidAmount &&
+      Math.floor(chair.bidAmount) > 0) ||
+    (!budget && Math.floor(budget - 0) > 10) ||
+    !(Math.floor(budget - 0) - Math.floor(chair.bidAmount) >= 10)
+
   return (
     <Flex
       flexDirection="row"
@@ -69,7 +72,8 @@ export default ({ partyId, chair }) => {
             isWin={isWin}
             enable={!isWin}
             onClick={() =>
-              !isWin && bid(partyId, chair.id, Math.floor(chair.bidAmount))
+              !isWin &&
+              bid(partyId, chair.id, Math.floor(chair.bidAmount), isWin)
             }
           >
             + 10m

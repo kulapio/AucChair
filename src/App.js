@@ -96,12 +96,24 @@ export default () => {
           <Route
             exact
             path="/"
-            component={() => <Dashboard chairs={chairs} partyId={partyId} />}
+            component={() => (
+              <Dashboard
+                chairs={chairs}
+                partyId={partyId}
+                budget={party.budget}
+              />
+            )}
           />
           <Route
             exact
             path="/:id"
-            component={() => <Dashboard chairs={chairs} partyId={partyId} />}
+            component={() => (
+              <Dashboard
+                chairs={chairs}
+                partyId={partyId}
+                budget={party.budget}
+              />
+            )}
           />
           <Route path="/" component={NotFoundPage} />
         </Switch>

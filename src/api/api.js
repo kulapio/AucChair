@@ -28,12 +28,13 @@ export const getParty = async id => {
   }
 }
 
-export const bid = async (pid, cid, price) => {
+export const bid = async (pid, cid, price, isWin) => {
   if (!(pid && pid - 0 === Math.floor(pid - 0) && pid - 0 >= 1 && pid - 0 <= 7))
     return
   if (!(cid && cid - 0 === Math.floor(cid - 0) && cid - 0 >= 1 && cid - 0 <= 5))
     return
-  api.post(`bid?partyId=${pid}&chairId=${cid}&amount=${price + 10}`)
+  const diff = isWin ? 0 : 10
+  api.post(`bid?partyId=${pid}&chairId=${cid}&amount=${price + diff - 0}`)
 }
 
 window.aucbid = bid

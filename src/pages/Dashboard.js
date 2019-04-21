@@ -12,7 +12,7 @@ const Tab = Loadable({
   ),
 })
 
-export default ({ chairs, partyId }) => {
+export default ({ chairs, partyId, budget }) => {
   if (!chairs || chairs.length === 0) {
     return (
       <Flex
@@ -36,7 +36,7 @@ export default ({ chairs, partyId }) => {
         })
         .map((chair, i) => (
           <Flex key={i} mt="20px">
-            <Tab partyId={partyId || -1} chair={chair} />
+            <Tab partyId={partyId || -1} chair={chair} budget={budget} />
           </Flex>
         ))}
     </Flex>
