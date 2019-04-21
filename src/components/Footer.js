@@ -4,6 +4,7 @@ import colors from '../ui/colors'
 
 export default ({ name }) => (
   <Flex
+    mt="30px"
     flexDirection="column"
     bg={colors.oliveBrown}
     width={1}

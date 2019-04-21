@@ -1,12 +1,12 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'http://192.168.2.34:3000/',
+  baseURL: 'http://stupidhack.kulap.io:3000/api/v1/',
 })
 
 export const getChairs = async () => {
   try {
-    const { data } = await api.get('api/v1/leader-board')
+    const { data } = await api.get('leader-board')
     return data
   } catch (e) {
     console.log(e)
@@ -16,7 +16,7 @@ export const getChairs = async () => {
 
 export const getParty = async id => {
   try {
-    const { data } = await api.get(`api/v1/party?id=${id}`)
+    const { data } = await api.get(`party?id=${id}`)
     return data
   } catch (e) {
     console.log(e)
@@ -33,7 +33,7 @@ export const bid = async (pid, cid, price) => {
     return
   if (!(cid && cid - 0 === Math.floor(cid - 0) && cid - 0 >= 1 && cid - 0 <= 5))
     return
-  api.post(`api/v1/bid?partyId=${pid}&chairId=${cid}&amount=${price + 1}`)
+  api.post(`bid?partyId=${pid}&chairId=${cid}&amount=${price + 1}`)
 }
 
 window.aucbid = bid

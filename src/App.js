@@ -45,11 +45,8 @@ const useInterval = (callback, delay) => {
   }, [callback])
 
   useEffect(() => {
-    function tick() {
-      savedCallback.current()
-    }
     if (delay !== null) {
-      let id = setInterval(tick, delay)
+      let id = setInterval(() => savedCallback.current(), delay)
       return () => clearInterval(id)
     }
   }, [delay])
@@ -71,20 +68,24 @@ export default () => {
 
   useInterval(() => {
     ;(async () => {
-      const chairs = await getChairs()
-      const party = await getParty(partyId)
+      if (!window.aucLoading) {
+        window.aucLoading = true
+        const chairs = await getChairs()
+        const party = await getParty(partyId)
 
-      const stake = chairs
-        .filter(chair => chair.winnerParty.id === partyId)
-        .map(chair => chair.bidAmount)
-        .reduce((a, b) => a - 0 + (b - 0), 0)
+        const stake = chairs
+          .filter(chair => chair.winnerParty.id === partyId)
+          .map(chair => chair.bidAmount)
+          .reduce((a, b) => a - 0 + (b - 0), 0)
 
-      party.budget = party.budget - stake
+        party.budget = party.budget - stake
 
-      setParty(party)
-      setChairs(chairs)
+        setParty(party)
+        setChairs(chairs)
+        window.aucLoading = false
+      }
     })()
-  }, 1000)
+  }, 500)
 
   return (
     <PageContainer>
