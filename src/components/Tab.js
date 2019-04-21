@@ -24,7 +24,10 @@ const Favicon = Loadable({
 })
 
 export default ({ partyId, chair }) => {
-  const isWin = partyId === chair.winnerParty.id
+  const isWin =
+    partyId === chair.winnerParty.id &&
+    chair.bidAmount &&
+    Math.floor(chair.bidAmount) > 0
   return (
     <Flex
       flexDirection="row"

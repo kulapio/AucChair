@@ -33,7 +33,7 @@ export const bid = async (pid, cid, price) => {
     return
   if (!(cid && cid - 0 === Math.floor(cid - 0) && cid - 0 >= 1 && cid - 0 <= 5))
     return
-  api.post(`bid?partyId=${pid}&chairId=${cid}&amount=${price + 1}`)
+  api.post(`bid?partyId=${pid}&chairId=${cid}&amount=${price + 10}`)
 }
 
 window.aucbid = bid

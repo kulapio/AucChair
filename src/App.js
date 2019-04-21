@@ -79,6 +79,7 @@ export default () => {
           .reduce((a, b) => a - 0 + (b - 0), 0)
 
         party.budget = party.budget - stake
+        party.budget = party.budget < 0 ? 0 : party.budget
 
         setParty(party)
         setChairs(chairs)
